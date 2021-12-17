@@ -1,7 +1,6 @@
 import exoplanet as xo
 import numpy as np
 import lightkurve as lk
-import matplotlib.pyplot as plt
 import pymc3 as pm
 import aesara_theano_fallback.tensor as tt
 import pymc3_ext as pmx
@@ -9,11 +8,9 @@ from celerite2.theano import terms, GaussianProcess
 import warnings
 import logging
 
-
 # Suppress exoplanet & theano warnings
 logging.getLogger("theano.tensor.opt").setLevel(logging.ERROR)
 warnings.filterwarnings(action="ignore", category=UserWarning, module="exoplanet")
-
 
 # Download the light curve
 lcfs = lk.search_lightcurve(

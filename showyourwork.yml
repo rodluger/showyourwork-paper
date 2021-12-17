@@ -1,7 +1,5 @@
 dependencies:
-  src/figures/HD118203_transit.py:
-    - src/data/HD118203.npz
-  src/figures/HD118203_corner.py:
+  src/figures/HD118203.py:
     - src/data/HD118203.npz
 
 zenodo:
