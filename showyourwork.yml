@@ -6,6 +6,7 @@ dependencies:
 
 zenodo:
   - src/data/HD118203.npz:
+      id: 5703575
       script: src/analysis/HD118203.py
       title: HD118203 transit analysis
       description: >-
