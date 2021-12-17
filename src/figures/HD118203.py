@@ -19,8 +19,8 @@ x_fold = (x - map_t0 + 0.5 * map_period) % map_period - 0.5 * map_period
 inds = np.argsort(x_fold)
 plt.scatter(x_fold, y - gp_pred - map_mean, c="k", s=3, alpha=0.5)
 plt.plot(x_fold[inds], lc_pred[inds] - map_mean, "C0")
-plt.xlabel("time since transit [days]", fontsize=12)
-plt.ylabel("relative flux [ppt]", fontsize=12)
+plt.xlabel("time since transit [days]", fontsize=16)
+plt.ylabel("relative flux [ppt]", fontsize=16)
 _ = plt.xlim(-0.25, 0.25)
 fig.savefig("HD118203_transit.pdf", bbox_inches="tight")
 
@@ -30,9 +30,9 @@ samples[:, 0] *= 1e5
 fig = corner.corner(
     samples,
     labels=[
-        "$\mathrm{period} - 6.13498$ [days]",
-        "planet/star radius ratio",
-        "impact parameter",
+        "$P - P_0$ [days]",
+        "radius ratio",
+        "impact param",
     ],
     truths=[0, 0.05538, 0.125],
 )
@@ -49,6 +49,6 @@ fig.axes[6].set_xticklabels(
 for axis in fig.axes:
     for tick in axis.xaxis.get_major_ticks() + axis.yaxis.get_major_ticks():
         tick.label.set_fontsize(6)
-    axis.set_xlabel(axis.get_xlabel(), fontsize=12)
-    axis.set_ylabel(axis.get_ylabel(), fontsize=12)
+    axis.set_xlabel(axis.get_xlabel(), fontsize=16)
+    axis.set_ylabel(axis.get_ylabel(), fontsize=16)
 fig.savefig("HD118203_corner.pdf", bbox_inches="tight")

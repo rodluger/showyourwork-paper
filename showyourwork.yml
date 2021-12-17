@@ -1,15 +1,21 @@
 dependencies:
   src/figures/HD118203.py:
     - src/data/HD118203.npz
+  
+  src/figures/luhman16b.py:
+    - src/data/luhman16b.pickle
 
 zenodo:
-  - src/data/HD118203.npz:
-      id: 5703575
-      script: src/analysis/HD118203.py
-      title: HD118203 transit analysis
-      description: >-
-        Analysis of the transits of HD118203 in TESS based on
-        https://gallery.exoplanet.codes/tutorials/quick-tess/
-        and https://arxiv.org/abs/1911.05150.
-      creators:
-        - Luger, Rodrigo
+  src/data/HD118203.npz:
+    id: 5703575
+    script: src/analysis/HD118203.py
+    title: HD118203 transit analysis
+    description: >-
+      Analysis of the transits of HD118203 in TESS based on
+      https://gallery.exoplanet.codes/tutorials/quick-tess/
+      and https://arxiv.org/abs/1911.05150.
+    creators:
+      - Luger, Rodrigo
+
+  src/data/luhman16b.pickle:
+    id: 5534787
