@@ -20,4 +20,4 @@ jobs:
         id: build
         uses: ./showyourwork/showyourwork-action
         with:
-          article-cache-number:
+          article-cache-number: ~
