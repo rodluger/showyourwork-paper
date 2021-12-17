@@ -21,3 +21,4 @@ jobs:
         uses: ./showyourwork/showyourwork-action
         with:
           article-cache-number: null
+          conda-cache-number: null
