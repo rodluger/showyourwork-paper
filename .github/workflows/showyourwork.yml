@@ -19,6 +19,3 @@ jobs:
       - name: Build the article PDF
         id: build
         uses: ./showyourwork/showyourwork-action
-        with:
-          article-cache-number: null
-          conda-cache-number: null
