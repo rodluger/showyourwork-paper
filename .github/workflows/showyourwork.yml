@@ -16,9 +16,6 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
-      - name: Install graphviz
-        run: sudo apt-get install graphviz
-
       - name: Build the article PDF
         id: build
         uses: ./showyourwork/showyourwork-action
