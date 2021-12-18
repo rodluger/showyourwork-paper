@@ -5,7 +5,7 @@ dependencies:
   - numpy=1.19.2
   - pip>=20.3.3
   - python=3.9
-  - imagemagick=7.1.0_16
+  - imagemagick=7.0.8_16
   - graphviz=2.40.1
   - pip:
       - matplotlib==3.4.3
