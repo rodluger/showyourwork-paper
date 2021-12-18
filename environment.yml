@@ -2,7 +2,7 @@ channels:
   - defaults
   - conda-forge
 dependencies:
-  - numpy==1.19.3
+  - numpy=1.19.2
   - pip>=20.3.3
   - python=3.9
   - imagemagick>=7.0.0
