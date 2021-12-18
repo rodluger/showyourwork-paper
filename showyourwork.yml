@@ -5,6 +5,9 @@ dependencies:
   src/figures/luhman16b.py:
     - src/data/luhman16b.pickle
 
+  src/figures/placeholder.py:
+    - src/figures/utils/utils.py
+
 zenodo:
   src/data/HD118203.npz:
     id: 5703575
