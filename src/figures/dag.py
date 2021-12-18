@@ -100,6 +100,8 @@ for figure in script_info.get("figures", []):
     # Figure images
     for file in files:
 
+        # DOT can't render PDF images, so we need to use ImageMagick
+        # to temporarily convert them to PNG
         png_file = file.replace(".pdf", ".png")
         subprocess.call(["convert", file, png_file])
         png_files.append(png_file)
