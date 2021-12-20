@@ -1,8 +1,20 @@
 % Define document class
 \documentclass[twocolumn]{aastex631}
 
-% Filler text
-\usepackage{blindtext}
+
+\usepackage{listings}
+
+\lstdefinestyle{LaTeX}{%
+    language=[LaTeX]TeX,
+    basicstyle=\ttfamily\footnotesize,
+    texcsstyle=*\bf\color{black},
+    numbers=none,
+    breaklines=true,
+    commentstyle=\color{red},
+    frame=single,
+    tabsize=2,
+    keywords={begin,caption,label,end,includegraphics},   
+}
 
 % Begin!
 \begin{document}
@@ -15,17 +27,41 @@
 
 % Abstract with filler text
 \begin{abstract}
-    \blindtext
+    Abstract coming soon.
 \end{abstract}
 
 % Main body with filler text
 \section{Introduction}
 
+Introduction coming soon.
+
+\section{Inferring the figure tree}
+
+\showyourwork determines the relationship between a figure (e.g., a \texttt{*.pdf} image) and the script that generated it (e.g., a \texttt{*.py} file) via inspection of the \texttt{figure} environment in the \texttt{TeX} file. 
+Specifically, it inspects the \texttt{{\textbackslash}includegraphics} and \texttt{{\textbackslash}label} commands to infer the name of the figure and the script that generated it, respectively.
+Consider the following snippet, used to generate Figure~\ref{fig:eccentricity}:
+%
+\begin{lstlisting}[
+    style=LaTeX,
+    otherkeywords={figures/eccentricity.pdf,fig:eccentricity},
+    emph={figures/eccentricity.pdf,fig:eccentricity},
+    emphstyle={\color{blue}}
+]
+\begin{figure}
+  \begin{centering}
+    \includegraphics{figures/eccentricity.pdf}
+    \caption{...}
+    \label{fig:eccentricity}
+  \end{centering}
+\end{figure}
+\end{lstlisting}
+
+
 \begin{figure}[ht!]
     \begin{centering}
         \includegraphics[width=\linewidth]{figures/eccentricity.pdf}
         \caption{
-            LEGWORK plot. Figure reproduced from \citet{Wagg2021}.
+            The effect of eccentricity on the detectability of a \emph{LISA} source; reproduced from Figure 3 in \citet{Wagg2021}.
         }
         \label{fig:eccentricity}
     \end{centering}
@@ -33,21 +69,22 @@
 
 \begin{figure}[ht!]
     \begin{centering}
-        \includegraphics[width=\linewidth]{figures/rossbyridge.pdf}
+        \includegraphics[width=\linewidth]{figures/luhman16b.pdf}
         \caption{
-            Rossby ridge. Figure reproduced from David et al. (in prep).
+            16 \emph{CRIRES} spectra of WISE 1049-5319B spanning a full rotation period of the brown dwarf; adapted from Figure 14 in \citet{Luger2021}. 
+            Data originally from \citet{Crossfield2014}.
         }
-        \label{fig:rossbyridge}
+        \label{fig:luhman16b}
     \end{centering}
 \end{figure}
 
 \begin{figure}[ht!]
     \begin{centering}
-        \includegraphics[width=\linewidth]{figures/luhman16b.pdf}
+        \includegraphics[width=\linewidth]{figures/rossbyridge.pdf}
         \caption{
-            Caption. Figure adapted from \citet{Luger2021}; data originally from \citet{Crossfield2014}.
+            A pile-up of stars in the rotation period-temperature space at slightly faster rotation than the sun (orange dot); adapted from Figure 1 in David et al. (in prep).
         }
-        \label{fig:luhman16b}
+        \label{fig:rossbyridge}
     \end{centering}
 \end{figure}
 
@@ -89,6 +126,8 @@
         \includegraphics[width=\linewidth]{figures/dag.pdf}
         \caption{
             A directed acyclic graph (DAG) showing the build process for each of the (other) figures in this article. 
+            Figure scripts are represented by black rectangles; helper scripts (such as ones imported by figure scripts or used in dataset generation) are similar, but have rounded edges.
+            Blue cylinders correspond to Zenodo records; blue boxes correspond to datasets.
         }
         \label{fig*:dag}
     \end{centering}
