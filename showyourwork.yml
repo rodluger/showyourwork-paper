@@ -7,8 +7,10 @@ dependencies:
   src/figures/luhman16b.py:
     - src/data/luhman16b.pickle
 
-  src/figures/placeholder.py:
-    - src/figures/utils/utils.py
+  src/figures/rossbyridge.py:
+    - src/figures/helpers/sun.py
+    - src/data/McQuillan2014.csv
+    - src/data/KeplerRot-LAMOST.csv
 
 zenodo:
   src/data/HD118203.npz:
@@ -24,3 +26,9 @@ zenodo:
 
   src/data/luhman16b.pickle:
     id: 5534787
+
+  src/data/McQuillan2014.csv:
+    id: 5794178
+
+  src/data/KeplerRot-LAMOST.csv:
+    id: 5794178
