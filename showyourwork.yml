@@ -12,6 +12,9 @@ dependencies:
     - src/data/McQuillan2014.csv
     - src/data/KeplerRot-LAMOST.csv
 
+  src/ms.tex:
+    - src/style.tex
+
 zenodo:
   src/data/HD118203.npz:
     id: 5703575
