@@ -5,6 +5,7 @@ dependencies:
   - numpy=1.19.2
   - pip>=20.3.3
   - python=3.9
+  - tectonic=0.8.0
   - pip:
       - matplotlib==3.4.3
       - lightkurve==2.0.11

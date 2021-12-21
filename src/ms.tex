@@ -4,6 +4,15 @@
 
 \usepackage{listings}
 
+\lstdefinestyle{bash}{%
+    language=bash,
+    basicstyle=\ttfamily\footnotesize,
+    texcsstyle=*\bf\color{black},
+    numbers=none,
+    breaklines=true,
+    commentstyle=\color{red},
+    frame=single
+}
 \lstdefinestyle{LaTeX}{%
     language=[LaTeX]TeX,
     basicstyle=\ttfamily\footnotesize,
@@ -15,6 +24,7 @@
     tabsize=2,
     keywords={begin,caption,label,end,includegraphics},   
 }
+\definecolor{lsthilite}{rgb}{0.0,0.0,1.0}
 
 % Begin!
 \begin{document}
@@ -35,7 +45,21 @@
 
 Introduction coming soon.
 
-\section{Inferring the figure tree}
+\section{Repository structure}
+
+\begin{figure}[ht!]
+    \begin{centering}
+        \includegraphics[width=0.5\linewidth]{figures/tree.pdf}
+        \caption{
+            Basic repository structure for an open source scientfic article.
+        }
+        \label{fig:tree}
+    \end{centering}
+\end{figure}
+
+See Figure~\ref{fig:tree}.
+
+\section{Automatic figure generation}
 
 \showyourwork determines the relationship between a figure (e.g., a \texttt{*.pdf} image) and the script that generated it (e.g., a \texttt{*.py} file) via inspection of the \texttt{figure} environment in the \texttt{TeX} file. 
 Specifically, it inspects the \texttt{{\textbackslash}includegraphics} and \texttt{{\textbackslash}label} commands to infer the name of the figure and the script that generated it, respectively.
@@ -45,7 +69,7 @@ Consider the following snippet, used to generate Figure~\ref{fig:eccentricity}:
     style=LaTeX,
     otherkeywords={figures/eccentricity.pdf,fig:eccentricity},
     emph={figures/eccentricity.pdf,fig:eccentricity},
-    emphstyle={\color{blue}}
+    emphstyle={\color{lsthilite}}
 ]
 \begin{figure}
   \begin{centering}
@@ -55,7 +79,18 @@ Consider the following snippet, used to generate Figure~\ref{fig:eccentricity}:
   \end{centering}
 \end{figure}
 \end{lstlisting}
-
+%
+The convention in \showyourwork is to infer the parent script for a figure referenced in an \texttt{includegraphics} call (in this case, {\color{lsthilite}\texttt{figures/eccentricity.pdf}}) from the figure \texttt{label}. 
+Specifically, if a label starts with {\color{lsthilite}\texttt{fig:}}, the remainder of the label (e.g., {\color{lsthilite}\texttt{eccentricity}}) is interpreted as the name of a script in the \texttt{figures/} directory which can be executed to produce that figure. 
+By default, figure scripts are expected to be \texttt{Python} scripts, so in this case \showyourwork will attempt to run
+%
+\begin{lstlisting}[
+    style=bash
+]
+python eccentricity.py
+\end{lstlisting}
+%
+from within the \texttt{figures/} directory to generate \texttt{eccentricity.pdf}.
 
 \begin{figure}[ht!]
     \begin{centering}
