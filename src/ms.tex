@@ -12,6 +12,7 @@
 
 % Author list
 \author[0000-0002-0296-3826]{Rodrigo Luger}
+\author{Others TBD}
 
 % Abstract with filler text
 \begin{abstract}
@@ -23,23 +24,80 @@
 
 Introduction coming soon.
 
+\section{Prerequisites}
+\label{sec:prereq}
+Conda. Linux/UNIX/Mac. GitHub account.
+
 \section{Starting a project}
 \label{sec:start}
 %
 Users can start a new project by \href{https://github.com/rodluger/showyourwork-template/generate}{creating a fresh repository based on the \texttt{showyourwork-template}}.
-This will create a new repository under the user's \texttt{GitHub} account and trigger a \texttt{GitHub Action} that will finish the setup process.
-After a few minutes...
+This will create a new repository under the user's \texttt{GitHub} account and trigger a \texttt{GitHub Action} that will finish the setup process and build a skeleton version of the paper.
+After a few minutes, a banner will appear on the repository's main page with links to the build logs and the compiled article PDF (see Figure~\ref{fig:banner}).
 %
-\begin{figure}[ht!]
+\begin{figure}[th!]
     \begin{centering}
         \includegraphics[width=\linewidth]{static/banner.png}
         \caption{
-            The default \texttt{README} banner in a repository instantiated from the \texttt{showyourwork-template}, with links to the \texttt{GitHub Action} build logs, a tarball containing the \texttt{TeX} source for the article, a directed acyclic graph (DAG) of the build process, and the compiled article PDF, respectively.
+            The default \texttt{README.md} banner in a repository instantiated from the \texttt{showyourwork-template}, with links to the \texttt{GitHub Action} build logs, a tarball containing the \texttt{TeX} source for the article, a directed acyclic graph (DAG) of the build process, and the compiled article PDF, respectively.
         }
         \label{fig:banner}
     \end{centering}
 \end{figure}
 %
+At this point, the repository can be cloned locally, e.g.,
+%
+\begin{lstlisting}[
+    style=bash,
+    otherkeywords={user,repo},
+    emph={user,repo},
+    emphstyle={\color{lsthilite}}
+]
+git clone https://github.com/user/repo
+cd repo
+\end{lstlisting}
+%
+where {\color{lsthilite}\texttt{user}} and {\color{lsthilite}\texttt{repo}} are the \texttt{GitHub} user name and repository name, respectively.
+The user may now edit the manuscript (\texttt{src/ms.tex}), add figure scripts to the \texttt{src/figures} directory, etc. (see \S\ref{sec:struct}).
+The article may be built locally by running \texttt{make} in the top level directory (see \S\ref{sec:local-builds}).
+Upon committing and pushing the changes to the remote repository, the \texttt{GitHub Action} will be triggered automatically, generating a new article PDF in sync with the latest changes (see \S\ref{sec:remote-builds}).
+
+\section{Reproducing a project}
+\label{sec:reproduce}
+%
+Any project based on \showyourwork can be reproduced by cloning its \texttt{GitHub} repository and running \texttt{make}:
+%
+\begin{lstlisting}[
+    style=bash,
+    otherkeywords={user,repo},
+    emph={user,repo},
+    emphstyle={\color{lsthilite}}
+]
+git clone https://github.com/user/repo
+cd repo
+make
+\end{lstlisting}
+%
+This will create a fresh \texttt{conda} environment and run the \texttt{Snakemake} workflow to build the article from scratch, which may entail the execution of computationally-intensive scripts/tasks.
+These may sometimes be skipped by instead running
+%
+\begin{lstlisting}[
+    style=bash
+]
+make fast
+\end{lstlisting}
+%
+which will download any available intermediate files from \texttt{Zenodo} instead of generating them from scratch. See \S\ref{sec:local-builds} for details.
+
+\section{Local builds}
+\label{sec:local-builds}
+%
+Coming soon.
+
+\section{Remote builds}
+\label{sec:remote-builds}
+%
+Coming soon.
 
 \section{Repository structure}
 \label{sec:struct}
