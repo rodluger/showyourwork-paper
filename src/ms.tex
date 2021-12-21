@@ -21,8 +21,78 @@
 
 % Main body with filler text
 \section{Introduction}
+\label{sec:intro}
 
 Introduction coming soon.
+
+\section{Examples}
+\label{sec:examples}
+
+\begin{figure}[ht!]
+    \begin{centering}
+        \includegraphics[width=\linewidth]{figures/eccentricity.pdf}
+        \caption{
+            The effect of binary eccentricity on the detectability of a \emph{LISA} gravitational wave source; reproduced from Figure 3 in \citet{Wagg2021}. 
+            This figure was automatically generated from the script \texttt{src/figures/eccentricity.py}.
+        }
+        \label{fig:eccentricity}
+    \end{centering}
+\end{figure}
+
+\begin{figure}[ht!]
+    \begin{centering}
+        \includegraphics[width=\linewidth]{figures/luhman16b.pdf}
+        \caption{
+            16 \emph{CRIRES} spectra of WISE 1049-5319B spanning a full rotation period of the brown dwarf; adapted from Figure 14 in \citet{Luger2021} and based on data from \citet{Crossfield2014}.
+            This figure was automatically generated from the script \texttt{src/figures/luhman16b.py} and a dataset downloaded from \texttt{Zenodo}.
+        }
+        \label{fig:luhman16b}
+    \end{centering}
+\end{figure}
+
+\begin{figure}[ht!]
+    \begin{centering}
+        \includegraphics[width=\linewidth]{figures/rossbyridge.pdf}
+        \caption{
+            A pile-up of stars in the rotation period-temperature space at slightly faster rotation than the Sun (orange dot); adapted from Figure 1 in David et al. (in prep).
+            This figure was automatically generated from the script \texttt{src/figures/rossbyridge.py}, a dataset downloaded from \texttt{Zenodo}, and the helper script \texttt{src/figures/helpers/sun.py}.
+        }
+        \label{fig:rossbyridge}
+    \end{centering}
+\end{figure}
+
+\begin{figure}[ht!]
+    \begin{centering}
+        \includegraphics[width=\linewidth]{figures/HD118203_transit.pdf}
+        \includegraphics[width=\linewidth]{figures/HD118203_corner.pdf}
+        \caption{
+            The phase-folded transit of HD 118203b in \emph{TESS} (\emph{top}) and the inferred joint posterior distributions over its period, radius, and impact parameter (\emph{bottom}); adapted from the \texttt{exoplanet} documentation \citep{ForemanMackey2021}.
+            Both figures were generated from the script \texttt{src/figures/HD118203.py}. 
+            They both depend on an intermediate result (a dataset containing the MCMC posterior samples), which can either be generated from scratch by running \texttt{src/analysis/HD118203.py} or by downloading a cached version from \texttt{Zenodo}.
+        }
+        \label{fig:HD118203}
+    \end{centering}
+\end{figure}
+
+\begin{figure}[ht!]
+    \begin{centering}
+        \includegraphics[width=\linewidth]{static/TESSaperture.pdf}
+        \caption{
+            \emph{TESS} target pixel file (TPF) of V1298 Tau
+            overlaid with an r-band sky image from the Digitized Sky Survey (DSS);
+            reproduced from Figure 1 in \citet{Feinstein2021}.
+            This figure exists as a static PDF, with no associated script to
+            generate it.
+            We therefore include it in the \texttt{src/static} directory, which tells the workflow to not attempt to generate it. 
+            By default, margin icons are not added to static figures.
+            Here we manually add an icon linking to the original paper using the \texttt{\textbackslash marginicon} command.
+        }
+        \marginicon{%
+            \href{https://ui.adsabs.harvard.edu/abs/2021arXiv211108660F}{\color{sywBlue}\faNewspaper[regular]}
+        }
+        \label{fig:eclipse}
+    \end{centering}
+\end{figure}
 
 \section{Prerequisites}
 \label{sec:prereq}
@@ -169,7 +239,7 @@ from within the \texttt{figures/} directory to generate \texttt{eccentricity.pdf
 This behavior may be customized in several ways. 
 First, the figure script need not be a \texttt{Python} script; see \S\ref{sec:other-lang} for information on how to include scripts in any language.
 Second, a common scenario involves a script that generates multiple figures.
-These can all be included (using \texttt{includegraphics}) in the same figure environment with a single shared label (denoting the name of the script)
+These can all be included (using \texttt{{\textbackslash}includegraphics}) in the same figure environment with a single shared label (denoting the name of the script)
 ...
 
 \section{Support for other languages}
@@ -227,70 +297,6 @@ If additional customization is needed, such as the need to provide command-line 
 \label{sec:arbitrary-rules}
 %
 Coming soon.
-
-\begin{figure}[ht!]
-    \begin{centering}
-        \includegraphics[width=\linewidth]{figures/eccentricity.pdf}
-        \caption{
-            The effect of eccentricity on the detectability of a \emph{LISA} source; reproduced from Figure 3 in \citet{Wagg2021}.
-        }
-        \label{fig:eccentricity}
-    \end{centering}
-\end{figure}
-
-\begin{figure}[ht!]
-    \begin{centering}
-        \includegraphics[width=\linewidth]{figures/luhman16b.pdf}
-        \caption{
-            16 \emph{CRIRES} spectra of WISE 1049-5319B spanning a full rotation period of the brown dwarf; adapted from Figure 14 in \citet{Luger2021}. 
-            Data originally from \citet{Crossfield2014}.
-        }
-        \label{fig:luhman16b}
-    \end{centering}
-\end{figure}
-
-\begin{figure}[ht!]
-    \begin{centering}
-        \includegraphics[width=\linewidth]{figures/rossbyridge.pdf}
-        \caption{
-            A pile-up of stars in the rotation period-temperature space at slightly faster rotation than the sun (orange dot); adapted from Figure 1 in David et al. (in prep).
-        }
-        \label{fig:rossbyridge}
-    \end{centering}
-\end{figure}
-
-\begin{figure}[ht!]
-    \begin{centering}
-        \includegraphics[width=\linewidth]{figures/HD118203_transit.pdf}
-        \includegraphics[width=\linewidth]{figures/HD118203_corner.pdf}
-        \caption{
-            The phase-folded transit of HD 118203b in \emph{TESS} (\emph{top}) and the inferred joint posterior distributions over its period, radius, and impact parameter (\emph{bottom}); adapted from the \texttt{exoplanet} documentation \citep{ForemanMackey2021}.
-            Both figures were generated from the same \texttt{Python} script in the \texttt{src/figures} directory (linked to in the \texttt{GitHub} icon in the margin). The other margin icon indicates that these figures depend on a dataset (a \texttt{.npz} file containing the posterior samples), which is automatically generated by \showyourwork and uploaded to Zenodo. 
-            Users wishing to reproduce the results in this paper can choose whether to re-generate this dataset or download a static version from Zenodo (linked to in the margin).
-        }
-        \label{fig:HD118203}
-    \end{centering}
-\end{figure}
-
-\begin{figure}[ht!]
-    \begin{centering}
-        \includegraphics[width=\linewidth]{static/TESSaperture.pdf}
-        \caption{
-            \emph{TESS} target pixel file (TPF) of V1298 Tau
-            overlaid with an r-band sky image from the Digitized Sky Survey (DSS);
-            reproduced from Figure 1 in \citet{Feinstein2021}.
-            This figure exists as a static PDF, with no associated script to
-            generate it.
-            We therefore include it in the \texttt{src/static} directory, which tells \showyourwork to not attempt to generate it. 
-            By default, margin icons are not added to static figures.
-            Here we manually add an icon linking to the original paper using the \texttt{\textbackslash marginicon} command.
-        }
-        \marginicon{%
-            \href{https://ui.adsabs.harvard.edu/abs/2021arXiv211108660F}{\color{sywBlue}\faNewspaper[regular]}
-        }
-        \label{fig:eclipse}
-    \end{centering}
-\end{figure}
 
 \section{This paper}
 
