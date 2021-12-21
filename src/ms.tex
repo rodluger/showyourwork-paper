@@ -106,7 +106,7 @@ Coming soon.
     \begin{centering}
         \includegraphics[width=0.5\linewidth]{figures/tree.pdf}
         \caption{
-            The basic repository structure for an open source scientfic article based on \texttt{showyourwork-template}.
+            The basic repository structure for an open source scientific article based on \texttt{showyourwork-template}.
             See text for details.
         }
         \label{fig:tree}
@@ -117,7 +117,7 @@ Figure~\ref{fig:tree} shows the basic directory structure for a repository insta
 The main components are:
 \begin{itemize}
     \item \texttt{.github/workflow/showyourwork.yml}: The configuration file for the \texttt{GitHub Actions} workflow, with instructions on how to set up the virtual environment, checkout the repository, and invoke the \texttt{showyourwork-action} to build and publish the article PDF.
-    \item \texttt{showyourwork}: The \texttt{git} submodule containing the \showyourwork workflow, which manages the entire build process for the article.
+    \item \texttt{showyourwork}: The \texttt{git} submodule containing the main workflow, which manages the entire build process for the article.
     \item \texttt{src}: A directory containing all of the scripts needed to generate the article.
     \item \texttt{src/data}: A directory containing programmatically generated (or downloaded) datasets and dependencies that are not tracked by \texttt{git}; this directory should be empty when the repository is first cloned.
     \item \texttt{src/figures}: A directory containing all of the scripts needed to generate the article figures.
@@ -126,10 +126,10 @@ The main components are:
     These may include photographs, flowcharts, or other figures that cannot be programmatically generated.
     \item \texttt{src/ms.tex}: The main \texttt{TeX} article manuscript.
     \item \texttt{Makefile}: A read-only UNIX/Linux makefile that enables users to build the article by running \texttt{make} in the command-line terminal.
-    \item \texttt{Snakefile}: A file containing the rules for the \texttt{Snakemake} workflow.
+    \item \texttt{Snakefile}: A file containing the rules for the \texttt{Snakemake} workflow; see \S\ref{sec:Snakefile}
     By default, it simply imports all of the rules defined in \texttt{showyourwork/workflow/Snakefile}, but users can edit this file to add new rules or customize existing rules.
-    \item \texttt{environment.yml}: The \texttt{conda} environment file specifying all of the direct software dependencies of the workflow.
-    \item \texttt{showyourwork.yml}: The main configuration file for the workflow, where users can specify figure and dataset dependencies, instructions for downloading datasets from \texttt{Zenodo}, etc.
+    \item \texttt{environment.yml}: The \texttt{conda} environment file specifying all of the direct software dependencies of the workflow; see \S\ref{sec:environmentyml}
+    \item \texttt{showyourwork.yml}: The main configuration file for the workflow, where users can specify figure and dataset dependencies, instructions for downloading datasets from \texttt{Zenodo}, etc.; see \S\ref{sec:showyourworkyml}
 \end{itemize}
 
 \section{Automatic figure generation}
@@ -292,7 +292,9 @@ Coming soon.
     \end{centering}
 \end{figure}
 
-\begin{figure*}[ht!]
+\section{This paper}
+
+\begin{figure*}[p!]
     \begin{centering}
         \includegraphics[width=\linewidth]{figures/dag.pdf}
         \caption{
@@ -303,6 +305,30 @@ Coming soon.
         \label{fig*:dag}
     \end{centering}
 \end{figure*}
+
+\subsection{The \texttt{Snakefile}}
+\label{sec:Snakefile}
+%
+\lstinputlisting[
+    style=Snakefile
+]
+{../Snakefile}
+
+\subsection{The \texttt{showyourwork.yml} file}
+\label{sec:showyourworkyml}
+%
+\lstinputlisting[
+    style=yaml
+]
+{../showyourwork.yml}
+
+\subsection{The \texttt{environment.yml} file}
+\label{sec:environmentyml}
+%
+\lstinputlisting[
+    style=yaml
+]
+{../environment.yml}
 
 \bibliography{bib}
 

@@ -21,8 +21,8 @@ zenodo:
     script: src/analysis/HD118203.py
     title: HD118203 transit analysis
     description: >-
-      Analysis of the transits of HD118203 in TESS based on
-      https://gallery.exoplanet.codes/tutorials/quick-tess/
+      Analysis of the transits of HD118203 in TESS 
+      based on gallery.exoplanet.codes/tutorials
       and https://arxiv.org/abs/1911.05150.
     creators:
       - Luger, Rodrigo
