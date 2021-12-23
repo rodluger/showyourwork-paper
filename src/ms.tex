@@ -76,21 +76,19 @@ Introduction coming soon.
 
 \begin{figure}[ht!]
     \begin{centering}
-        \includegraphics[width=\linewidth]{static/TESSaperture.pdf}
+        \includegraphics[width=\linewidth]{figures/v1298tau.pdf}
         \caption{
             \emph{TESS} target pixel file (TPF) of V1298 Tau
             overlaid with an r-band sky image from the Digitized Sky Survey (DSS);
             reproduced from Figure 1 in \citet{Feinstein2021}.
-            This figure exists as a static PDF, with no associated script to
-            generate it.
-            We therefore include it in the \texttt{src/static} directory, which tells the workflow to not attempt to generate it. 
-            By default, margin icons are not added to static figures.
-            Here we manually add an icon linking to the original paper using the \texttt{\textbackslash marginicon} command.
+            This figure was downloaded directly from the \texttt{GitHub} repository for that paper by providing a custom rule in the \texttt{Snakefile}.
+            By default, margin icons are not added to figures with custom rules.
+            Here we manually add an icon linking to the original figure using the \texttt{\textbackslash marginicon} command.
         }
         \marginicon{%
-            \href{https://ui.adsabs.harvard.edu/abs/2021arXiv211108660F}{\color{sywBlue}\faNewspaper[regular]}
+            \href{https://github.com/afeinstein20/v1298tau_tess/raw/c670e0/src/static/TESSaperture.pdf}{\color{sywBlue}\faFileImage}
         }
-        \label{fig:eclipse}
+        \label{fig*:v1298tau}
     \end{centering}
 \end{figure}
 
@@ -110,6 +108,8 @@ After a few minutes, a banner will appear on the repository's main page with lin
         \includegraphics[width=\linewidth]{static/banner.png}
         \caption{
             The default \texttt{README.md} banner in a repository instantiated from the \texttt{showyourwork-template}, with links to the \texttt{GitHub Action} build logs, a tarball containing the \texttt{TeX} source for the article, a directed acyclic graph (DAG) of the build process, and the compiled article PDF, respectively.
+            Note that since this figure is a screenshot, we place it in the \texttt{src/static} folder and \texttt{git}-commit it.
+            The workflow skips the generation step for any figures in that directory; note the absence of a margin icon next to this caption.
         }
         \label{fig:banner}
     \end{centering}
@@ -237,10 +237,10 @@ python eccentricity.py
 from within the \texttt{figures/} directory to generate \texttt{eccentricity.pdf}.
 
 This behavior may be customized in several ways. 
-First, the figure script need not be a \texttt{Python} script; see \S\ref{sec:other-lang} for information on how to include scripts in any language.
-Second, a common scenario involves a script that generates multiple figures.
-These can all be included (using \texttt{{\textbackslash}includegraphics}) in the same figure environment with a single shared label (denoting the name of the script)
-...
+For instance, the figure script need not be a \texttt{Python} script; see \S\ref{sec:other-lang} for information on how to include scripts in any language.
+Another common scenario involves a script that generates multiple figures. These can all be included (using \texttt{{\textbackslash}includegraphics}) in the same figure environment with a single shared label (denoting the name of the script), or in multiple different figure environments by appending an arbitrary suffix to each figure label to make them all unique (i.e., \texttt{fig:eccentricity:one}, \texttt{fig:eccentricity:two}, etc.)
+And finally, this behavior may be overridden entirely by supplying a label that does not begin with \texttt{fig:}, in which case the workflow will not attempt to programmatically generate the figure.
+In this case, the figure must either be directly committed to the repository as a static figure (e.g., Figure~\ref{fig:banner}) or a custom rule must be provided in the \texttt{Snakefile} to generate it (e.g., Figure~\ref{fig*:v1298tau}).
 
 \section{Support for other languages}
 \label{sec:other-lang}
