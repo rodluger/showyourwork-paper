@@ -1,4 +1,8 @@
 \usepackage{listings}
+\usepackage{hyperref}
+
+\definecolor{fancyblue}{rgb}{0.09,0.35,0.53}
+\colorlet{lsthilite}{fancyblue}
 
 \lstdefinestyle{bash}{%
     basicstyle=\ttfamily\footnotesize,
@@ -10,19 +14,25 @@
     basicstyle=\ttfamily\footnotesize,
     numbers=none,
     breaklines=true,
-    frame=single
+    frame=single,
+    morecomment=[l][\color{fancyblue}]{\#}
 }
 \lstdefinestyle{Snakefile}{%
     basicstyle=\ttfamily\footnotesize,
     numbers=none,
     breaklines=true,
-    frame=single
+    frame=single,
+    morecomment=[l][\color{fancyblue}]{\#}
 }
 \lstdefinestyle{LaTeX}{%
     basicstyle=\ttfamily\footnotesize,
     numbers=none,
     breaklines=true,
-    frame=single,
-    keywords={begin,caption,label,end,includegraphics},   
+    frame=single  
 }
-\definecolor{lsthilite}{rgb}{0.0,0.0,1.0}
+
+\hypersetup{%
+    linkcolor=fancyblue,
+    citecolor=fancyblue,
+    urlcolor=fancyblue
+}

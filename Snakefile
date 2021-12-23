@@ -11,7 +11,7 @@ module showyourwork:
 # Use all default rules
 use rule * from showyourwork
 
-
+# Custom rule to download the V1298 figure
 rule v1298tau:
     output:
         "src/figures/v1298tau.pdf"

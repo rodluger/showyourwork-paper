@@ -115,8 +115,9 @@ After a few minutes, a banner will appear on the repository's main page with lin
     \end{centering}
 \end{figure}
 %
-At this point, the repository can be cloned locally, e.g.,
-%
+At this point, the repository can be cloned locally, e.g.,\\
+
+\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[
     style=bash,
     otherkeywords={user,repo},
@@ -126,8 +127,9 @@ At this point, the repository can be cloned locally, e.g.,
 git clone https://github.com/user/repo
 cd repo
 \end{lstlisting}
-%
-where {\color{lsthilite}\texttt{user}} and {\color{lsthilite}\texttt{repo}} are the \texttt{GitHub} user name and repository name, respectively.
+\end{minipage}
+
+\noindent where {\color{lsthilite}\texttt{user}} and {\color{lsthilite}\texttt{repo}} are the \texttt{GitHub} user name and repository name, respectively.
 The user may now edit the manuscript (\texttt{src/ms.tex}), add figure scripts to the \texttt{src/figures} directory, etc. (see \S\ref{sec:struct}).
 The article may be built locally by running \texttt{make} in the top level directory (see \S\ref{sec:local-builds}).
 Upon committing and pushing the changes to the remote repository, the \texttt{GitHub Action} will be triggered automatically, generating a new article PDF in sync with the latest changes (see \S\ref{sec:remote-builds}).
@@ -135,8 +137,9 @@ Upon committing and pushing the changes to the remote repository, the \texttt{Gi
 \section{Reproducing a project}
 \label{sec:reproduce}
 %
-Any project based on \showyourwork can be reproduced by cloning its \texttt{GitHub} repository and running \texttt{make}:
-%
+Any project based on \showyourwork can be reproduced by cloning its \texttt{GitHub} repository and running \texttt{make}:\\
+
+\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[
     style=bash,
     otherkeywords={user,repo},
@@ -147,17 +150,20 @@ git clone https://github.com/user/repo
 cd repo
 make
 \end{lstlisting}
-%
-This will create a fresh \texttt{conda} environment and run the \texttt{Snakemake} workflow to build the article from scratch, which may entail the execution of computationally-intensive scripts/tasks.
-These may sometimes be skipped by instead running
-%
+\end{minipage}
+
+\noindent This will create a fresh \texttt{conda} environment and run the \texttt{Snakemake} workflow to build the article from scratch, which may entail the execution of computationally-intensive scripts/tasks.
+These may sometimes be skipped by instead running\\
+
+\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[
     style=bash
 ]
 make fast
 \end{lstlisting}
-%
-which will download any available intermediate files from \texttt{Zenodo} instead of generating them from scratch. See \S\ref{sec:local-builds} for details.
+\end{minipage}
+
+\noindent which will download any available intermediate files from \texttt{Zenodo} instead of generating them from scratch. See \S\ref{sec:local-builds} for details.
 
 \section{Local builds}
 \label{sec:local-builds}
@@ -207,8 +213,9 @@ The main components are:
 %
 The workflow automatically determines the relationship between a figure (e.g., a \texttt{*.pdf} image) and the script that generated it (e.g., a \texttt{*.py} file) via inspection of the \texttt{figure} environment in the \texttt{TeX} file. 
 Specifically, it inspects the \texttt{{\textbackslash}includegraphics} and \texttt{{\textbackslash}label} commands to infer the name of the figure and the script that generated it, respectively.
-Consider the following snippet, used to generate Figure~\ref{fig:eccentricity}:
-%
+Consider the following snippet, used to generate Figure~\ref{fig:eccentricity}:\\
+
+\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[
     style=LaTeX,
     otherkeywords={figures/eccentricity.pdf,fig:eccentricity},
@@ -223,18 +230,21 @@ Consider the following snippet, used to generate Figure~\ref{fig:eccentricity}:
   \end{centering}
 \end{figure}
 \end{lstlisting}
-%
-The convention in \showyourwork is to infer the parent script for a figure referenced in an \texttt{includegraphics} call (in this case, {\color{lsthilite}\texttt{figures/eccentricity.pdf}}) from the figure \texttt{label}. 
+\end{minipage}
+
+\noindent The convention in \showyourwork is to infer the parent script for a figure referenced in an \texttt{includegraphics} call (in this case, {\color{lsthilite}\texttt{figures/eccentricity.pdf}}) from the figure \texttt{label}. 
 Specifically, if a label starts with {\color{lsthilite}\texttt{fig:}}, the remainder of the label (e.g., {\color{lsthilite}\texttt{eccentricity}}) is interpreted as the name of a script in the \texttt{figures/} directory which should be executed to produce that figure. 
-By default, figure scripts are expected to be \texttt{Python} scripts, so in this case the workflow will attempt to run
-%
+By default, figure scripts are expected to be \texttt{Python} scripts, so in this case the workflow will attempt to run\\
+
+\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[
     style=bash
 ]
 python eccentricity.py
 \end{lstlisting}
-%
-from within the \texttt{figures/} directory to generate \texttt{eccentricity.pdf}.
+\end{minipage}
+
+\noindent from within the \texttt{figures/} directory to generate \texttt{eccentricity.pdf}.
 
 This behavior may be customized in several ways. 
 For instance, the figure script need not be a \texttt{Python} script; see \S\ref{sec:other-lang} for information on how to include scripts in any language.
@@ -242,13 +252,16 @@ Another common scenario involves a script that generates multiple figures. These
 And finally, this behavior may be overridden entirely by either placing the figure in the \texttt{src/static} directory (and committing it directly to the \texttt{GitHub} repository) or by supplying a label that instead begins with \texttt{fig*:}, which instructs the workflow to not attempt to programmatically generate the figure.
 In the latter case, a custom rule must be provided in the \texttt{Snakefile} to generate it (see, e.g., Figure~\ref{fig*:v1298tau}).
 
+
+
 \section{Support for other languages}
 \label{sec:other-lang}
 %
 Scripts in languages other than \texttt{Python} are supported via the inclusion of entries under the \texttt{scripts} key in the \texttt{showyourwork.yml} config file. 
 Consider Figure~\ref{fig:tree}, which was generated from the \texttt{TeX} file \texttt{figures/tree.tex}, which contains a \texttt{TikZ} picture. 
-In the main manuscript, we include the figure in the usual way, i.e.,
-%
+In the main manuscript, we include the figure in the usual way, i.e.,\\
+
+\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[
     style=LaTeX,
     otherkeywords={figures/eccentricity.pdf,fig:eccentricity},
@@ -263,11 +276,13 @@ In the main manuscript, we include the figure in the usual way, i.e.,
   \end{centering}
 \end{figure}
 \end{lstlisting}
-%
-By default, as we saw in \S\ref{sec:auto-fig}, this instructs the workflow to execute a file called \texttt{figures/tree.py} to generate the corresponding figure. 
+\end{minipage}
+
+\noindent By default, as we saw in \S\ref{sec:auto-fig}, this instructs the workflow to execute a file called \texttt{figures/tree.py} to generate the corresponding figure. 
 However, in the present case, that file does not exist; instead, we have a file called \texttt{figures/tree.tex}, which we would like to compile into a \texttt{PDF} using te \texttt{tectonic} engine.
-We can instruct the workflow to do this by specifying the following in \texttt{showyourwork.yml}:
-%
+We can instruct the workflow to do this by specifying the following in \texttt{showyourwork.yml}:\\
+
+\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[
     style=yaml,
     otherkeywords={script.path,script.name},
@@ -278,8 +293,9 @@ scripts:
   tex:
     cd {script.path} && tectonic {script.name}
 \end{lstlisting}
-%
-Each entry under the \texttt{scripts} key should be a file extension, and under each one, a string containing a shell command that instructs the workflow how to execute a given {\color{lsthilite}\texttt{script}} to produce a given {\color{lsthilite}\texttt{output}}.
+\end{minipage}
+
+\noindent Each entry under the \texttt{scripts} key should be a file extension, and under each one, a string containing a shell command that instructs the workflow how to execute a given {\color{lsthilite}\texttt{script}} to produce a given {\color{lsthilite}\texttt{output}}.
 For convenience, the following placeholders are recognized and expand as follows at runtime:
 %
 \begin{itemize}
@@ -295,6 +311,11 @@ If additional customization is needed, such as the need to provide command-line 
 
 \section{Arbitrary rules}
 \label{sec:arbitrary-rules}
+%
+Coming soon.
+
+\section{Zenodo interface}
+\label{sec:zenodo}
 %
 Coming soon.
 
@@ -315,26 +336,32 @@ Coming soon.
 \subsection{The \texttt{Snakefile}}
 \label{sec:Snakefile}
 %
+\begin{minipage}{\linewidth}
 \lstinputlisting[
     style=Snakefile
 ]
 {../Snakefile}
+\end{minipage}
 
 \subsection{The \texttt{showyourwork.yml} file}
 \label{sec:showyourworkyml}
 %
+\begin{minipage}{\linewidth}
 \lstinputlisting[
     style=yaml
 ]
 {../showyourwork.yml}
+\end{minipage}
 
 \subsection{The \texttt{environment.yml} file}
 \label{sec:environmentyml}
 %
+\begin{minipage}{\linewidth}
 \lstinputlisting[
     style=yaml
 ]
 {../environment.yml}
+\end{minipage}
 
 \bibliography{bib}
 
