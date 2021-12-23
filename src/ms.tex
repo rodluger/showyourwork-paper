@@ -239,8 +239,8 @@ from within the \texttt{figures/} directory to generate \texttt{eccentricity.pdf
 This behavior may be customized in several ways. 
 For instance, the figure script need not be a \texttt{Python} script; see \S\ref{sec:other-lang} for information on how to include scripts in any language.
 Another common scenario involves a script that generates multiple figures. These can all be included (using \texttt{{\textbackslash}includegraphics}) in the same figure environment with a single shared label (denoting the name of the script), or in multiple different figure environments by appending an arbitrary suffix to each figure label to make them all unique (i.e., \texttt{fig:eccentricity:one}, \texttt{fig:eccentricity:two}, etc.)
-And finally, this behavior may be overridden entirely by supplying a label that does not begin with \texttt{fig:}, in which case the workflow will not attempt to programmatically generate the figure.
-In this case, the figure must either be directly committed to the repository as a static figure (e.g., Figure~\ref{fig:banner}) or a custom rule must be provided in the \texttt{Snakefile} to generate it (e.g., Figure~\ref{fig*:v1298tau}).
+And finally, this behavior may be overridden entirely by either placing the figure in the \texttt{src/static} directory (and committing it directly to the \texttt{GitHub} repository) or by supplying a label that instead begins with \texttt{fig*:}, which instructs the workflow to not attempt to programmatically generate the figure.
+In the latter case, a custom rule must be provided in the \texttt{Snakefile} to generate it (see, e.g., Figure~\ref{fig*:v1298tau}).
 
 \section{Support for other languages}
 \label{sec:other-lang}
