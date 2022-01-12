@@ -1,4 +1,4 @@
-# Snakemake options. Override by calling, e.g., `make ms.pdf OPTIONS="..."`
+# Snakemake options. Override by calling, e.g., `make pdf OPTIONS="..."`
 OPTIONS ?= -c1
 
 
@@ -9,8 +9,8 @@ SHOWYOURWORK := $(shell test -f showyourwork/LICENSE && echo 1 || echo 0)
 
 
 # Default target: generate the article
-ms.pdf: showyourwork_setup
-	@$(MAKE) -C showyourwork ms.pdf
+pdf: showyourwork_setup
+	@$(MAKE) -C showyourwork pdf
 
 
 # Ensure we've cloned the showyourwork submodule

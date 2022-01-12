@@ -22,8 +22,11 @@ import legwork as lw
 import numpy as np
 import astropy.units as u
 import matplotlib.pyplot as plt
-
+from pathlib import Path
 from astropy.visualization import quantity_support
+
+# Path to the `tex` directory
+TEX = Path(__file__).absolute().parents[1] / "tex"
 
 quantity_support()
 
@@ -148,4 +151,4 @@ ax.set_ylim(1e-20, 2e-18)
 
 ax.set_rasterization_zorder(10000)
 
-plt.savefig("eccentricity.pdf", format="pdf", bbox_inches="tight")
+plt.savefig(TEX / "eccentricity.pdf", format="pdf", bbox_inches="tight")

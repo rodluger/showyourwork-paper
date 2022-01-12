@@ -1,0 +1,48 @@
+% Define document class
+\documentclass[twocolumn]{aastex631}
+
+% Begin!
+\begin{document}
+
+% Title
+\title{\showyourwork: a workflow for open source scientific articles}
+
+% Author list
+\author[0000-0002-0296-3826]{Rodrigo Luger}
+\author{Others TBD}
+
+% Abstract with filler text
+\begin{abstract}
+    Abstract coming soon.
+\end{abstract}
+
+% Main body with filler text
+\section{Introduction}
+\label{sec:intro}
+
+\begin{figure}[ht!]
+    \begin{centering}
+        \includegraphics[width=\linewidth]{figures/eccentricity.pdf}
+        \caption{
+            The effect of binary eccentricity on the detectability of a \emph{LISA} gravitational wave source; reproduced from Figure 3 in \citet{Wagg2021}. 
+            This figure was automatically generated from the script \texttt{src/figures/eccentricity.py}.
+        }
+        \label{fig:eccentricity}
+    \end{centering}
+\end{figure}
+
+\begin{figure}[th!]
+    \begin{centering}
+        \includegraphics[width=\linewidth]{figures/banner.png}
+        \caption{
+            The default \texttt{README.md} banner in a repository instantiated from the \texttt{showyourwork-template}, with links to the \texttt{GitHub Action} build logs, a tarball containing the \texttt{TeX} source for the article, a directed acyclic graph (DAG) of the build process, and the compiled article PDF, respectively.
+            Note that since this figure is a screenshot, we place it in the \texttt{src/static} folder and \texttt{git}-commit it.
+            The workflow skips the generation step for any figures in that directory; note the absence of a margin icon next to this caption.
+        }
+        \label{fig:banner}
+    \end{centering}
+\end{figure}
+
+\bibliography{bib}
+
+\end{document}
