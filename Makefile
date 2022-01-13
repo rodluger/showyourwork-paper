@@ -16,9 +16,9 @@ pdf: showyourwork_setup
 # Ensure we've cloned the showyourwork submodule
 showyourwork_setup:
 	@if [ "$(SHOWYOURWORK)" = "0" ]; then \
-		echo "Setting up the showyourwork submodule...";\
-		git submodule init;\
-		git submodule update;\
+		echo "Setting up the showyourwork submodule..."; \
+		git submodule init; \
+		git submodule update; \
 	fi
 
 
