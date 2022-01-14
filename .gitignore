@@ -3,6 +3,6 @@
 **/.showyourwork*
 
 # Showyourwork output files
-./*.pdf
+/*.pdf
 report.html
 arxiv.tar.gz
