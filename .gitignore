@@ -6,3 +6,9 @@
 /*.pdf
 report.html
 arxiv.tar.gz
+
+# Figure output
+src/tex/figures/*
+
+# Miscellaneous
+__pycache__

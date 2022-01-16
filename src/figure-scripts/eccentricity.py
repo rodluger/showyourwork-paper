@@ -17,16 +17,12 @@ frequency at which the ma- jority of the gravitational wave signal
 is concentrated.
 
 """
-
+import paths
 import legwork as lw
 import numpy as np
 import astropy.units as u
 import matplotlib.pyplot as plt
-from pathlib import Path
 from astropy.visualization import quantity_support
-
-# Path to the `tex/figures` directory
-FIGURES = Path(__file__).absolute().parents[1] / "tex" / "figures"
 
 quantity_support()
 
@@ -151,4 +147,4 @@ ax.set_ylim(1e-20, 2e-18)
 
 ax.set_rasterization_zorder(10000)
 
-plt.savefig(FIGURES / "eccentricity.pdf", format="pdf", bbox_inches="tight")
+plt.savefig(paths.figures / "eccentricity.pdf", format="pdf", bbox_inches="tight")
