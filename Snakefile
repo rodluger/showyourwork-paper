@@ -1,4 +1,4 @@
-rule foobar:
+rule random_numbers:
     output:
         "src/data/random_numbers.dat"
     conda:
