@@ -4,6 +4,6 @@ rule random_numbers:
     conda:
         "environment.yml"
     params:
-        seed=0
+        seed=6
     script:
         "src/scripts/generate_random_numbers.py"
