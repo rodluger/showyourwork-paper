@@ -35,4 +35,4 @@ zenodo_sandbox:
         C.dat:                                  # auto mapping to src/data/C.dat
         bar:                                    # subfolder
           H.dat:                                # auto mapping to src/data/bar/H.dat
-          G.dat: src/data/G_copy.dat            # rename
+          G.dat: src/data/G_copy.dat            # rename...
