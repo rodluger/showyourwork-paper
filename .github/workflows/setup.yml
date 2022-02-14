@@ -6,6 +6,10 @@ on:
       author:
         description: Full name of first author
         required: true
+      orcid:
+        description: ORCID for first author
+        required: false
+        default: "0000-0000-0000-0000"
 
 jobs:
   setup:
