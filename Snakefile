@@ -1,4 +1,4 @@
-rule random_numbers:
+rule random_numbers: 
     output:
         "src/data/random_numbers.dat"
     conda:
