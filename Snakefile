@@ -6,7 +6,7 @@ rule random_numbers:
     cache:
         True
     params:
-        seed=1
+        seed=0
     script:
         "src/scripts/generate_random_numbers.py"
 
@@ -19,6 +19,6 @@ rule many_datasets:
     cache:
         True
     params:
-        seed=1
+        seed=0
     script:
         "src/scripts/generate_many_datasets.py"
