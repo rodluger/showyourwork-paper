@@ -10,6 +10,9 @@ dependencies:
   src/figure-scripts/random_numbers.py: 
     - src/data/random_numbers.dat
 
+  src/figure-scripts/many_datasets.py: 
+    - src/data/many_datasets
+
   src/figure-scripts/zenodo_example.py: 
     - src/data/A.dat
     - src/data/baz/B.dat
