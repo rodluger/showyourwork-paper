@@ -2,6 +2,7 @@ import paths
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 data = np.loadtxt(paths.data / "random_numbers.dat")
 
 fig = plt.figure()
